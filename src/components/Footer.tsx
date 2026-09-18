@@ -2,7 +2,13 @@
 
 import React from "react";
 import Link from "next/link";
-import { MessageCircle, ShieldCheck, Truck, RefreshCw, HeartHandshake, CreditCard } from "lucide-react";
+import { MessageCircle, ShieldCheck, Truck, RefreshCw, HeartHandshake, CreditCard, Coffee } from "lucide-react";
+import DownloadSourceButton from "@/components/DownloadSourceButton";
+import {
+  OPEN_SOURCE_CREDIT,
+  TRAKTEER_URL,
+  buildDefaultTrakteerTipUrl,
+} from "@/lib/trakteer";
 
 export default function Footer() {
   return (
@@ -117,10 +123,41 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Dukungan & Source Code */}
+        <div className="pt-8">
+          <div className="bg-[#1B4332]/70 border border-[#D4AF37]/30 rounded-3xl p-5 flex flex-col lg:flex-row items-center justify-between gap-4">
+            <div className="text-center lg:text-left space-y-1">
+              <h4 className="text-[#D4AF37] font-bold text-sm flex items-center justify-center lg:justify-start gap-2">
+                <Coffee className="w-4 h-4" /> Gratis, Bebas Iklan, dan Open Source
+              </h4>
+              <p className="text-[11px] text-stone-300 leading-relaxed">
+                Traktir kopi untuk bantu biaya server, atau unduh source code lengkap web app ini
+                secara gratis (lisensi MIT).
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center gap-2 shrink-0 w-full sm:w-auto">
+              <a
+                href={buildDefaultTrakteerTipUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`Traktir kopi untuk NAQI WEAR via ${TRAKTEER_URL}`}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#D4AF37] hover:bg-[#B38F24] text-[#1B4332] font-bold text-xs px-4 py-2.5 rounded-xl shadow transition-transform active:scale-95"
+              >
+                <Coffee className="w-4 h-4" /> Traktir Kopi via Trakteer
+              </a>
+              <DownloadSourceButton className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#081C15] hover:bg-[#0d2a1f] text-[#D4AF37] font-bold text-xs px-4 py-2.5 rounded-xl border border-[#D4AF37]/40 shadow transition-transform active:scale-95 disabled:opacity-70 disabled:cursor-wait" />
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Rights */}
-        <div className="pt-8 border-t border-emerald-900/60 text-center text-xs text-stone-400 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-8 border-t border-emerald-900/60 mt-8 text-center text-xs text-stone-400 flex flex-col md:flex-row justify-between items-center gap-4">
           <p>© {new Date().getFullYear()} NAQI WEAR. Hak Cipta Dilindungi Undang-Undang.</p>
-          <p className="text-stone-500">Merek Unkus & Bebas Hak Cipta — Diciptakan untuk Kemudahan Belanja Syar&apos;i</p>
+          <p className="text-stone-300">
+            <span className="text-[#D4AF37] font-bold">{OPEN_SOURCE_CREDIT}</span>
+            <span className="mx-1.5 text-stone-600">•</span>
+            Lisensi MIT — bebas dipelajari, diubah, dan dibagikan
+          </p>
         </div>
       </div>
     </footer>

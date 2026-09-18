@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import BottomNav from "@/components/BottomNav";
 import ToastNotification from "@/components/ToastNotification";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import TrakteerWidget from "@/components/TrakteerWidget";
 
 export const metadata: Metadata = {
   title: "NAQI WEAR - Toko Fashion Muslim Online Syar'i & Anggun",
@@ -30,6 +31,7 @@ export default function RootLayout({
               {children}
             </main>
             <FloatingWhatsApp />
+            <TrakteerWidget />
             <Footer />
             <BottomNav />
           </CartProvider>
