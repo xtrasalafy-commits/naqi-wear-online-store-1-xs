@@ -15,7 +15,7 @@ export default function Footer() {
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-sm text-[#D4AF37]">100% Syar'i & Original</h4>
+              <h4 className="font-bold text-sm text-[#D4AF37]">100% Syar&apos;i & Original</h4>
               <p className="text-xs text-stone-400">Bahan tebal tidak menerawang</p>
             </div>
           </div>
@@ -65,7 +65,7 @@ export default function Footer() {
             </div>
             <p className="text-xs text-stone-300 leading-relaxed">
               NAQI WEAR adalah busana muslim wanita, pria, anak, dan keluarga berkualitas premium.
-              Tampil syar'i, anggun, dan nyaman setiap hari tanpa perlu khawatir menerawang.
+              Tampil syar&apos;i, anggun, dan nyaman setiap hari tanpa perlu khawatir menerawang.
             </p>
             <a
               href="https://wa.me/6281234567890"
@@ -82,7 +82,7 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-[#D4AF37] mb-4 text-sm uppercase tracking-wider">Kategori Populer</h4>
             <ul className="space-y-2 text-xs text-stone-300">
-              <li><Link href="/katalog?kategori=wanita" className="hover:text-[#D4AF37]">Gamis & Abaya Syar'i</Link></li>
+              <li><Link href="/katalog?kategori=wanita" className="hover:text-[#D4AF37]">Gamis & Abaya Syar&apos;i</Link></li>
               <li><Link href="/katalog?kategori=hijab" className="hover:text-[#D4AF37]">Pashmina & Khimar Pet</Link></li>
               <li><Link href="/katalog?kategori=mukena" className="hover:text-[#D4AF37]">Mukena Silk 2-in-1 Travel</Link></li>
               <li><Link href="/katalog?kategori=pria" className="hover:text-[#D4AF37]">Baju Koko & Jubah Saudi</Link></li>
@@ -120,7 +120,7 @@ export default function Footer() {
         {/* Bottom Rights */}
         <div className="pt-8 border-t border-emerald-900/60 text-center text-xs text-stone-400 flex flex-col md:flex-row justify-between items-center gap-4">
           <p>© {new Date().getFullYear()} NAQI WEAR. Hak Cipta Dilindungi Undang-Undang.</p>
-          <p className="text-stone-500">Merek Unkus & Bebas Hak Cipta — Diciptakan untuk Kemudahan Belanja Syar'i</p>
+          <p className="text-stone-500">Merek Unkus & Bebas Hak Cipta — Diciptakan untuk Kemudahan Belanja Syar&apos;i</p>
         </div>
       </div>
     </footer>

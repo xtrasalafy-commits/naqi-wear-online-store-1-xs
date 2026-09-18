@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { ArrowLeft, Search, Truck, CheckCircle2 } from "lucide-react";
 import { useCart } from "@/context/CartContext";
@@ -11,11 +11,7 @@ export default function AdminOrdersPage() {
   const [loading, setLoading] = useState(true);
   const [filterStatus, setFilterStatus] = useState("semua");
 
-  useEffect(() => {
-    fetchOrders();
-  }, []);
-
-  const fetchOrders = async () => {
+  const fetchOrders = useCallback(async () => {
     try {
       setLoading(true);
       const res = await fetch("/api/orders");
@@ -26,7 +22,13 @@ export default function AdminOrdersPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    void (async () => {
+      await fetchOrders();
+    })();
+  }, [fetchOrders]);
 
   const handleUpdateStatus = async (orderId: number, statusPesanan: string, resi?: string) => {
     try {

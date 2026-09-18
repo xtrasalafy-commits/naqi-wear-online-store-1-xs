@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { Filter, SlidersHorizontal, ChevronRight, X, Sparkles, RefreshCw } from "lucide-react";
@@ -29,15 +29,7 @@ function CatalogContent() {
   const [maxPrice, setMaxPrice] = useState<number>(1000000);
   const [mobileFilterOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
-  useEffect(() => {
-    fetchProducts();
-  }, [selectedCat, selectedGender, selectedSort, queryQ, maxPrice]);
-
-  const fetchCategories = async () => {
+  const fetchCategories = useCallback(async () => {
     try {
       const res = await fetch("/api/categories");
       const json = await res.json();
@@ -45,9 +37,9 @@ function CatalogContent() {
     } catch (e) {
       console.error(e);
     }
-  };
+  }, []);
 
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(async () => {
     try {
       setLoading(true);
       let url = `/api/products?sort=${selectedSort}&limit=50`;
@@ -70,7 +62,19 @@ function CatalogContent() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedCat, selectedGender, selectedSort, queryQ, maxPrice, selectedSize]);
+
+  useEffect(() => {
+    void (async () => {
+      await fetchCategories();
+    })();
+  }, [fetchCategories]);
+
+  useEffect(() => {
+    void (async () => {
+      await fetchProducts();
+    })();
+  }, [fetchProducts]);
 
   const resetFilters = () => {
     setSelectedCat("semua");
@@ -111,8 +115,8 @@ function CatalogContent() {
       <div className="bg-white p-6 rounded-3xl border border-amber-100 shadow-syari flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-black text-[#1B4332] flex items-center gap-2">
-            Katalog Fashion Muslim Syar'i
-            {queryQ && <span className="text-amber-600 text-base font-normal">"{queryQ}"</span>}
+            Katalog Fashion Muslim Syar&apos;i
+            {queryQ && <span className="text-amber-600 text-base font-normal">&quot;{queryQ}&quot;</span>}
           </h1>
           <p className="text-xs text-stone-500 mt-1">
             Menampilkan {products.length} pilihan pakaian muslim berkualitas premium, adem, dan menutup aurat dengan sempurna.

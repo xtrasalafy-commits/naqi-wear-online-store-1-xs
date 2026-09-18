@@ -85,8 +85,8 @@ export default function SizeChartModal({
         </div>
 
         <div className="bg-emerald-50 text-[#1B4332] p-4 rounded-2xl text-xs space-y-1 border border-emerald-200">
-          <p className="font-bold">💡 Tips Belanja Syar'i:</p>
-          <p>• Bila lingkar dada berada di antara 2 ukuran, pilihlah ukuran yang lebih besar agar lebih longgar dan syar'i.</p>
+          <p className="font-bold">💡 Tips Belanja Syar&apos;i:</p>
+          <p>• Bila lingkar dada berada di antara 2 ukuran, pilihlah ukuran yang lebih besar agar lebih longgar dan syar&apos;i.</p>
           <p>• Semua produk NAQI WEAR sudah dilengkapi toleransi jahit 1-2 cm.</p>
         </div>
 

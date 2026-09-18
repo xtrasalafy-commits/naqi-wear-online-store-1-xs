@@ -34,7 +34,7 @@ export default function ReturnPolicyPage() {
           <h3 className="font-bold text-[#1B4332] text-base">Langkah Mudah Retur:</h3>
           <ol className="list-decimal pl-5 space-y-1">
             <li>Buka halaman <strong>Akun Saya &gt; Pesanan Saya</strong>.</li>
-            <li>Tekan tombol <strong>"Ajukan Retur"</strong> pada pesanan yang sudah berstatus selesai.</li>
+            <li>Tekan tombol <strong>&quot;Ajukan Retur&quot;</strong> pada pesanan yang sudah berstatus selesai.</li>
             <li>Isi alasan retur dan unggah foto produk.</li>
             <li>Tim CS WhatsApp kami akan menghubungi Anda dalam 1x24 jam untuk pengiriman tukar produk.</li>
           </ol>

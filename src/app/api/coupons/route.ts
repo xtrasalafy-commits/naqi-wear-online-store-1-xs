@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/db";
 import { coupons } from "@/db/schema";
-import { ensureDatabaseInitialized } from "@/db/init";
 import { eq } from "drizzle-orm";
 
 export async function GET() {
   try {
-    await ensureDatabaseInitialized();
     const list = await db.select().from(coupons).where(eq(coupons.aktif, true));
     return NextResponse.json({ success: true, data: list });
   } catch (error) {

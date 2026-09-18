@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/db";
 import { articles } from "@/db/schema";
-import { ensureDatabaseInitialized } from "@/db/init";
 import { desc } from "drizzle-orm";
 
 export async function GET() {
   try {
-    await ensureDatabaseInitialized();
     const list = await db.select().from(articles).orderBy(desc(articles.createdAt));
     return NextResponse.json({ success: true, data: list });
   } catch (error) {

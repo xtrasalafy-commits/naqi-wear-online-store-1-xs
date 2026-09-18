@@ -31,9 +31,6 @@ export default function HomePage() {
     async function loadHomeData() {
       try {
         setLoading(true);
-        // Init trigger
-        await fetch("/api/init");
-
         // Best sellers
         const resBest = await fetch("/api/products?bestseller=true&limit=4");
         const jsonBest = await resBest.json();
@@ -119,11 +116,11 @@ export default function HomePage() {
         <div className="max-w-xl space-y-6 z-10 text-center lg:text-left">
           <div className="inline-flex items-center gap-2 bg-[#081C15]/80 text-[#D4AF37] px-4 py-1.5 rounded-full text-xs font-extrabold border border-[#D4AF37]/40 shadow-inner">
             <Sparkles className="w-4 h-4 text-[#D4AF37] animate-spin" />
-            KOLEKSI SYAR'I TERBARU 2025
+            KOLEKSI SYAR&apos;I TERBARU 2025
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#FDF6E3] tracking-tight leading-tight">
-            Tampil Syar'i, Nyaman, & Elegan <span className="text-[#D4AF37]">Setiap Hari</span>
+            Tampil Syar&apos;i, Nyaman, & Elegan <span className="text-[#D4AF37]">Setiap Hari</span>
           </h1>
 
           <p className="text-sm sm:text-base text-stone-200 leading-relaxed font-light">
@@ -274,7 +271,7 @@ export default function HomePage() {
           <div className="flex items-center gap-2">
             <span className="p-2 bg-[#1B4332] text-[#D4AF37] rounded-xl font-bold">✨</span>
             <div>
-              <h2 className="text-xl sm:text-2xl font-black text-[#1B4332]">Koleksi Terbaru Syar'i</h2>
+              <h2 className="text-xl sm:text-2xl font-black text-[#1B4332]">Koleksi Terbaru Syar&apos;i</h2>
               <p className="text-xs sm:text-sm text-stone-500">Desain kekinian paling hangat di toko kami</p>
             </div>
           </div>
@@ -299,7 +296,7 @@ export default function HomePage() {
         <div className="text-center max-w-xl mx-auto space-y-2">
           <h2 className="text-2xl font-black text-[#1B4332]">Mengapa Memilih NAQI WEAR?</h2>
           <p className="text-xs text-stone-500">
-            Diciptakan khusus agar Anda belanja cepat, nyaman, dan tenang sesuai kaidah syar'i.
+            Diciptakan khusus agar Anda belanja cepat, nyaman, dan tenang sesuai kaidah syar&apos;i.
           </p>
         </div>
 
@@ -363,7 +360,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <p className="text-xs text-stone-700 leading-relaxed italic">
-                  "{t.ulasan}"
+                  &quot;{t.ulasan}&quot;
                 </p>
               </div>
 
@@ -385,7 +382,7 @@ export default function HomePage() {
       <section className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-xl sm:text-2xl font-black text-[#1B4332]">Artikel & Inspirasi Syar'i</h2>
+            <h2 className="text-xl sm:text-2xl font-black text-[#1B4332]">Artikel & Inspirasi Syar&apos;i</h2>
             <p className="text-xs sm:text-sm text-stone-500">Panduan busana, tips padu padan, dan inspirasi sarimbit</p>
           </div>
           <Link href="/artikel" className="text-xs font-bold text-[#1B4332] hover:text-[#D4AF37] flex items-center gap-1">

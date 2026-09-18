@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/db";
 import { products, categories, productImages, productVariants, reviews } from "@/db/schema";
-import { ensureDatabaseInitialized } from "@/db/init";
 import { eq, ilike, and, gte, lte, desc, asc, sql, or } from "drizzle-orm";
 
 export async function GET(req: NextRequest) {
   try {
-    await ensureDatabaseInitialized();
     const { searchParams } = new URL(req.url);
 
     const q = searchParams.get("q") || "";

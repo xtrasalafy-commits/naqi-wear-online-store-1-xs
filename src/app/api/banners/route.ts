@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/db";
 import { banners } from "@/db/schema";
-import { ensureDatabaseInitialized } from "@/db/init";
 import { asc, eq } from "drizzle-orm";
 
 export async function GET() {
   try {
-    await ensureDatabaseInitialized();
     const list = await db
       .select()
       .from(banners)

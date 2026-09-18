@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Heart, ShoppingCart, Trash2, ArrowRight } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
@@ -12,11 +12,7 @@ export default function WishlistPage() {
   const [wishlistProducts, setWishlistProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchWishlistItems();
-  }, [wishlistIds]);
-
-  const fetchWishlistItems = async () => {
+  const fetchWishlistItems = useCallback(async () => {
     try {
       setLoading(true);
       const res = await fetch("/api/products?limit=50");
@@ -30,7 +26,13 @@ export default function WishlistPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [wishlistIds]);
+
+  useEffect(() => {
+    void (async () => {
+      await fetchWishlistItems();
+    })();
+  }, [wishlistIds, fetchWishlistItems]);
 
   return (
     <div className="space-y-6">
@@ -55,7 +57,7 @@ export default function WishlistPage() {
             Klik ikon hati pada produk pilihan Anda di katalog untuk menyimpannya di sini.
           </p>
           <Link href="/katalog" className="inline-flex items-center gap-2 bg-[#1B4332] text-white font-bold text-xs px-6 py-3 rounded-xl">
-            Jelajahi Katalog Syar'i <ArrowRight className="w-4 h-4" />
+            Jelajahi Katalog Syar&apos;i <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       ) : (

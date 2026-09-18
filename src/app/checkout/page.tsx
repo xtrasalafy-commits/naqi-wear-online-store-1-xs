@@ -85,7 +85,7 @@ export default function CheckoutPage() {
       {/* Header & Steps Indicator */}
       <div className="text-center space-y-2">
         <h1 className="text-2xl sm:text-3xl font-black text-[#1B4332]">
-          Checkout Pesanan Syar'i
+          Checkout Pesanan Syar&apos;i
         </h1>
         <p className="text-xs text-stone-500">Lengkapi 3 langkah mudah berikut tanpa perlu ribet</p>
 

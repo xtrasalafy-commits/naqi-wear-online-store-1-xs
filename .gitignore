@@ -1,0 +1,8 @@
+node_modules/
+.next/
+.kilo/
+.vercel/
+*.tsbuildinfo
+.env
+.env.local
+.env.*.local

@@ -1,4 +1,6 @@
-import { db } from "./index";
+import "dotenv/config";
+import { basename } from "node:path";
+import { db, pool } from "./index";
 import {
   users,
   categories,
@@ -570,4 +572,15 @@ Memilih perpaduan warna earthy seperti Hijau Zamrud (#1B4332) dipadukan aksen Em
   });
 
   console.log("Database successfully seeded!");
+}
+
+if (basename(process.argv[1] ?? "") === "seed.ts") {
+  seedDatabase()
+    .catch((error) => {
+      console.error("Seed error:", error);
+      process.exitCode = 1;
+    })
+    .finally(() => {
+      void pool.end();
+    });
 }

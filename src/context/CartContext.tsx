@@ -69,48 +69,55 @@ const defaultAddress: AddressData = {
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [hasLoadedCart, setHasLoadedCart] = useState(false);
   const [appliedCoupon, setAppliedCoupon] = useState<CouponData | null>(null);
   const [shippingCost, setShippingCost] = useState<number>(15000);
   const [selectedCourier, setSelectedCourier] = useState<string>("SiCepat REG (1-2 Hari)");
   const [shippingAddress, setShippingAddress] = useState<AddressData>(defaultAddress);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // Load from localStorage if present
   useEffect(() => {
-    try {
-      const savedCart = localStorage.getItem("naqi_cart");
-      if (savedCart) {
-        setCart(JSON.parse(savedCart));
-      } else {
-        // Sample default cart item for demo convenience
-        setCart([
-          {
-            productId: 1,
-            variantId: 1,
-            nama: "Abaya Premium Silk Naqi",
-            slug: "abaya-premium-silk-naqi",
-            warna: "Hijau Zamrud",
-            ukuran: "M",
-            harga: 299000,
-            gambarUrl: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=800",
-            qty: 1,
-            sku: "NQ-1-HIJAU-M",
-            bahan: "Armani Silk Grade A"
-          }
-        ]);
+    void (async () => {
+      try {
+        const savedCart = window.localStorage.getItem("naqi_cart");
+        if (savedCart) {
+          setCart(JSON.parse(savedCart) as CartItem[]);
+        } else {
+          setCart([
+            {
+              productId: 1,
+              variantId: 1,
+              nama: "Abaya Premium Silk Naqi",
+              slug: "abaya-premium-silk-naqi",
+              warna: "Hijau Zamrud",
+              ukuran: "M",
+              harga: 299000,
+              gambarUrl: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=800",
+              qty: 1,
+              sku: "NQ-1-HIJAU-M",
+              bahan: "Armani Silk Grade A"
+            }
+          ]);
+        }
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setHasLoadedCart(true);
       }
-    } catch (e) {
-      console.error(e);
-    }
+    })();
   }, []);
 
   useEffect(() => {
+    if (!hasLoadedCart) {
+      return;
+    }
+
     try {
       localStorage.setItem("naqi_cart", JSON.stringify(cart));
     } catch (e) {
       console.error(e);
     }
-  }, [cart]);
+  }, [cart, hasLoadedCart]);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);

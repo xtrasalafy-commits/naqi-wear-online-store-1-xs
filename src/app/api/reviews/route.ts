@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/db";
 import { reviews } from "@/db/schema";
-import { ensureDatabaseInitialized } from "@/db/init";
 import { desc, eq } from "drizzle-orm";
 
 export async function GET(req: NextRequest) {
   try {
-    await ensureDatabaseInitialized();
     const { searchParams } = new URL(req.url);
     const productId = searchParams.get("productId");
 

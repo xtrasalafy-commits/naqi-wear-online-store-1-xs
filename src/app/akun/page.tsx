@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { User, Package, Heart, MapPin, LogOut, Truck, CheckCircle2, Clock, RefreshCw, Upload } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
@@ -18,11 +18,7 @@ export default function AccountPage() {
   const [returnModalOrder, setReturnModalOrder] = useState<any | null>(null);
   const [returAlasan, setReturAlasan] = useState("");
 
-  useEffect(() => {
-    fetchUserOrders();
-  }, [user]);
-
-  const fetchUserOrders = async () => {
+  const fetchUserOrders = useCallback(async () => {
     try {
       setLoadingOrders(true);
       const res = await fetch(`/api/orders?userId=${user?.id || 2}`);
@@ -35,7 +31,13 @@ export default function AccountPage() {
     } finally {
       setLoadingOrders(false);
     }
-  };
+  }, [user]);
+
+  useEffect(() => {
+    void (async () => {
+      await fetchUserOrders();
+    })();
+  }, [user, fetchUserOrders]);
 
   const handleReturnSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -214,7 +216,7 @@ export default function AccountPage() {
             <p><strong>Nama:</strong> {user?.nama}</p>
             <p><strong>Email:</strong> {user?.email}</p>
             <p><strong>WhatsApp:</strong> {user?.nomorWa}</p>
-            <p><strong>Status Syar'i:</strong> Terverifikasi Active Member</p>
+            <p><strong>Status Syar&apos;i:</strong> Terverifikasi Active Member</p>
           </div>
         </div>
       )}

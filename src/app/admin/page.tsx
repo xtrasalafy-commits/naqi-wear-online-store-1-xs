@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import {
   DollarSign,
@@ -18,11 +18,7 @@ export default function AdminDashboardPage() {
   const [stats, setStats] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchAdminStats();
-  }, []);
-
-  const fetchAdminStats = async () => {
+  const fetchAdminStats = useCallback(async () => {
     try {
       setLoading(true);
       const res = await fetch("/api/admin/stats");
@@ -35,7 +31,13 @@ export default function AdminDashboardPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    void (async () => {
+      await fetchAdminStats();
+    })();
+  }, [fetchAdminStats]);
 
   return (
     <div className="space-y-8">

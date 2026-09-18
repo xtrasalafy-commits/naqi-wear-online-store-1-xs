@@ -28,7 +28,7 @@ export default function ArticlesListPage() {
     <div className="space-y-8">
       <div className="bg-white p-8 rounded-3xl border border-amber-100 shadow-syari space-y-2">
         <h1 className="text-2xl sm:text-3xl font-black text-[#1B4332] flex items-center gap-2">
-          <BookOpen className="w-7 h-7 text-[#D4AF37]" /> Artikel & Inspirasi Busana Syar'i
+          <BookOpen className="w-7 h-7 text-[#D4AF37]" /> Artikel & Inspirasi Busana Syar&apos;i
         </h1>
         <p className="text-xs text-stone-500">
           Panduan memilih bahan, tips merawat gamis, dan inspirasi sarimbit keluarga.

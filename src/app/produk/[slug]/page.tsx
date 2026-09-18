@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect, use, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -51,11 +51,7 @@ export default function ProductDetailPage({
   const [sizeChartOpen, setSizeChartOpen] = useState(false);
   const [reviewModalOpen, setReviewModalOpen] = useState(false);
 
-  useEffect(() => {
-    fetchProductDetail();
-  }, [resolvedParams.slug]);
-
-  const fetchProductDetail = async () => {
+  const fetchProductDetail = useCallback(async () => {
     try {
       setLoading(true);
       const res = await fetch(`/api/products/${resolvedParams.slug}`);
@@ -81,13 +77,19 @@ export default function ProductDetailPage({
     } finally {
       setLoading(false);
     }
-  };
+  }, [resolvedParams.slug]);
+
+  useEffect(() => {
+    void (async () => {
+      await fetchProductDetail();
+    })();
+  }, [resolvedParams.slug, fetchProductDetail]);
 
   if (loading) {
     return (
       <div className="max-w-7xl mx-auto p-8 text-center space-y-4">
         <div className="w-16 h-16 border-4 border-[#1B4332] border-t-[#D4AF37] rounded-full animate-spin mx-auto" />
-        <p className="font-bold text-[#1B4332] text-sm">Memuat Busana Syar'i NAQI WEAR...</p>
+        <p className="font-bold text-[#1B4332] text-sm">Memuat Busana Syar&apos;i NAQI WEAR...</p>
       </div>
     );
   }
@@ -413,7 +415,7 @@ export default function ProductDetailPage({
                 <h4 className="font-bold text-[#1B4332]">Detail Spesifikasi:</h4>
                 <p>• <strong>Bahan Utama:</strong> {product.bahan}</p>
                 <p>• <strong>Berat Pakaian:</strong> {product.beratGram || 250} gram</p>
-                <p>• <strong>Fitur Syar'i:</strong> Wudhu Friendly, Busui Friendly, Saku Dalam</p>
+                <p>• <strong>Fitur Syar&apos;i:</strong> Wudhu Friendly, Busui Friendly, Saku Dalam</p>
               </div>
 
               <div className="p-4 bg-amber-50/50 rounded-2xl space-y-1">

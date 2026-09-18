@@ -139,7 +139,7 @@ export default function ReviewModal({
           <div className="border-2 border-dashed border-amber-200 bg-amber-50/40 rounded-2xl p-3 text-center text-xs text-stone-500">
             <Upload className="w-5 h-5 mx-auto text-[#1B4332] mb-1" />
             <p className="font-semibold text-stone-700">Foto Pembelian Terlampir</p>
-            <p className="text-[10px] text-stone-400">Gambar akan otomatis diverifikasi untuk kenyamanan ulasan syar'i</p>
+            <p className="text-[10px] text-stone-400">Gambar akan otomatis diverifikasi untuk kenyamanan ulasan syar&apos;i</p>
           </div>
 
           <button

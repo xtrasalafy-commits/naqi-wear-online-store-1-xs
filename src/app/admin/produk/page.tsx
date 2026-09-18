@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Plus, Edit, Trash2, ArrowLeft, Image as ImageIcon, Check } from "lucide-react";
 import { useCart } from "@/context/CartContext";
@@ -22,11 +22,7 @@ export default function AdminProductsPage() {
   const [gender, setGender] = useState("wanita");
   const [gambarUrl, setGambarUrl] = useState("https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=800");
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       setLoading(true);
       const resP = await fetch("/api/products?limit=100");
@@ -41,7 +37,13 @@ export default function AdminProductsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    void (async () => {
+      await fetchData();
+    })();
+  }, [fetchData]);
 
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();

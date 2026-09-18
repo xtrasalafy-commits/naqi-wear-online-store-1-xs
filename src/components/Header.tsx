@@ -44,7 +44,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-2">
             <Sparkles className="w-3.5 h-3.5 animate-pulse text-[#D4AF37]" />
-            <span>Toko Fashion Muslim Syar'i Terpercaya — Diskon Lebaran Hingga 50%</span>
+            <span>Toko Fashion Muslim Syar&apos;i Terpercaya — Diskon Lebaran Hingga 50%</span>
           </div>
           <div className="hidden md:flex items-center gap-4 text-[11px] text-stone-300">
             <span className="flex items-center gap-1">
@@ -78,7 +78,7 @@ export default function Header() {
                 NAQI <span className="text-[#D4AF37]">WEAR</span>
               </span>
               <span className="text-[10px] text-amber-200/80 tracking-widest block font-light uppercase">
-                Fashion Muslim Syar'i
+                Fashion Muslim Syar&apos;i
               </span>
             </div>
           </Link>
@@ -161,7 +161,7 @@ export default function Header() {
             {userDropdownOpen && (
               <div className="absolute right-0 mt-2 w-56 bg-white text-stone-800 rounded-2xl shadow-2xl border border-amber-100 p-2 z-50 animate-in fade-in slide-in-from-top-2">
                 <div className="p-3 border-b border-stone-100 bg-amber-50/50 rounded-xl mb-1">
-                  <p className="font-bold text-sm text-[#1B4332]">{user?.nama || "Tamu Syar'i"}</p>
+                  <p className="font-bold text-sm text-[#1B4332]">{user?.nama || "Tamu Syar&apos;i"}</p>
                   <p className="text-xs text-stone-500">{user?.email}</p>
                   <span className="inline-block mt-1 text-[10px] bg-[#1B4332] text-[#D4AF37] font-bold px-2 py-0.5 rounded-full">
                     {isAdmin ? "Mode Admin" : "Pelanggan Setia"}

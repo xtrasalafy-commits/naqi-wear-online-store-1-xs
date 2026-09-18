@@ -75,7 +75,7 @@ export default function CartPage() {
         </div>
         <h2 className="text-2xl font-black text-[#1B4332]">Keranjang Belanja Anda Masih Kosong</h2>
         <p className="text-xs text-stone-500">
-          Yuk lihat-lihat koleksi gamis, hijab, mukena, dan baju koko syar'i terbaru di NAQI WEAR!
+          Yuk lihat-lihat koleksi gamis, hijab, mukena, dan baju koko syar&apos;i terbaru di NAQI WEAR!
         </p>
         <Link
           href="/katalog"
@@ -95,7 +95,7 @@ export default function CartPage() {
             <ShoppingBag className="w-7 h-7 text-[#D4AF37]" /> Keranjang Belanja
           </h1>
           <p className="text-xs text-stone-500">
-            Periksa item pesanan syar'i Anda sebelum lanjut ke langkah pembayaran.
+            Periksa item pesanan syar&apos;i Anda sebelum lanjut ke langkah pembayaran.
           </p>
         </div>
         <button
@@ -170,7 +170,7 @@ export default function CartPage() {
           {/* Upsell Cross-sell Box */}
           <div className="bg-emerald-50/60 rounded-3xl p-5 border border-emerald-200 space-y-3">
             <h4 className="font-bold text-xs text-[#1B4332] flex items-center gap-1.5">
-              <Sparkles className="w-4 h-4 text-[#D4AF37]" /> Lengkapi Penampilan Syar'i Anda:
+              <Sparkles className="w-4 h-4 text-[#D4AF37]" /> Lengkapi Penampilan Syar&apos;i Anda:
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {addOnItems.map((addOn) => (

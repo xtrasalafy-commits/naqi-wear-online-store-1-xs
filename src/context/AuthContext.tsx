@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 
 export interface UserProfile {
   id: number;
@@ -58,12 +58,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<UserProfile | null>(demoCustomer);
   const [wishlistIds, setWishlistIds] = useState<number[]>([1, 4, 7]);
 
-  useEffect(() => {
-    // Load initial wishlists
-    fetchWishlist();
-  }, []);
-
-  const fetchWishlist = async () => {
+  const fetchWishlist = useCallback(async () => {
     try {
       const res = await fetch("/api/wishlists?userId=2");
       const json = await res.json();
@@ -73,7 +68,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (e) {
       console.error(e);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    // Load initial wishlists
+    void (async () => {
+      await fetchWishlist();
+    })();
+  }, [fetchWishlist]);
 
   const loginAsUser = () => {
     setUser(demoCustomer);

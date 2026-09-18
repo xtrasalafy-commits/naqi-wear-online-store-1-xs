@@ -1,13 +1,10 @@
 import { NextResponse } from "next/server";
 import { db } from "@/db";
 import { orders, orderItems, products, users } from "@/db/schema";
-import { ensureDatabaseInitialized } from "@/db/init";
 import { count, sum, desc, eq, gte } from "drizzle-orm";
 
 export async function GET() {
   try {
-    await ensureDatabaseInitialized();
-
     const allOrders = await db.select().from(orders);
     const totalOrders = allOrders.length;
 

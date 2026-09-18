@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/db";
 import { categories, products } from "@/db/schema";
-import { ensureDatabaseInitialized } from "@/db/init";
 import { asc, eq, count } from "drizzle-orm";
 
 export async function GET() {
   try {
-    await ensureDatabaseInitialized();
     const catList = await db.select().from(categories).orderBy(asc(categories.urutan));
 
     // Get item counts
